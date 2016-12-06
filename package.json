@@ -1,0 +1,24 @@
+{
+  "name": "amazonapi",
+  "version": "1.0.0",
+  "description": "Amazon API for CS 320 XML, WVUP Fall 2016. Credit to amazon-product-api by Dmitry Mazuro.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zroberts/amazonapi.git"
+  },
+  "author": "Zak Roberts",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zroberts/amazonapi/issues"
+  },
+  "dependencies": {
+    "es6-promise": "3.0.2",
+    "xml2js": "0.4.5",
+    "request": "2.53.0"
+  },
+  "homepage": "https://github.com/zroberts/amazonapi#readme"
+}
