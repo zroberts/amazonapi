@@ -1,16 +1,18 @@
 var amazon = require('./lib/index.js');
 
-modules.exports = {
+var client = null;
+module.exports = {
 	setApi: function(id, secret, tag){
-		var client = amazon.createClient({
+		client = amazon.createClient({
 			awsId: id,
 			awsSecret: secret,
 			awsTag: tag
 		})
 	},
 	search: function(searchItem, callback){
-		if(!client){
+		if(client == null){
 			callback("Please declare client");
+			return;
 		}
 		client.itemSearch({
 			Keywords: searchItem
@@ -22,6 +24,7 @@ modules.exports = {
 				for(var i = 0; i < 10; i++){
 					var amazonResponse = {
 						id: results[i].ASIN[0],
+						sku: "No SKU Available",
 						name: '',
 						price: '',
 						salePrice: null,
@@ -38,6 +41,7 @@ modules.exports = {
 						amazonResponse.category = results[i].ItemAttributes[e].Binding[0];
 						if(results[i].ItemAttributes[e].ListPrice){
 							amazonResponse.price = results[i].ItemAttributes[e].ListPrice[0].Amount[0];
+							amazonResponse.price = (amazonResponse.price/100).toFixed(2);
 						}else{
 							amazonResponse.price = '-1';
 						}
